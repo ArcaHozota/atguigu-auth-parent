@@ -1,0 +1,10 @@
+server:
+  port: 8087
+spring:  datasource:    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@//localhost:1521/XEPDB1
+    username: oraclect
+    password: oraclect
+    hikari:
+      maximum-pool-size: 30
+      max-lifetime: 1500000
+mybatis:  configuration:    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
