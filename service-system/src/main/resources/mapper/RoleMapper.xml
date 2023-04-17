@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!-- ロール授権のマッピング実装データ操作ファイル -->
+<!-- ロール授権のマッピング実装ファイル -->
 <mapper namespace="jp.co.atguigu.authsystem.mapper.RoleMapper">
 	<resultMap id="BasicResultMap"
 		type="jp.co.atguigu.model.entity.Role">
