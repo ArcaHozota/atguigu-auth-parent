@@ -7,5 +7,7 @@ spring:  datasource:    driver-class-name: oracle.jdbc.OracleDriver
     hikari:
       maximum-pool-size: 30
       max-lifetime: 1500000
-mybatis:  configuration:    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+mybatis:  configuration:    database-id: oracle
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
   type-aliases-package: jp.co.atguigu.model.entity
