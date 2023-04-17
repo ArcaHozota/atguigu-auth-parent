@@ -18,4 +18,17 @@
 		<result column="LOGIC_DELETE_FLG" jdbcType="NVARCHAR"
 			property="logicDeleteFlg" />
 	</resultMap>
+	<select id="findAll" resultMap="BasicResultMap">
+		SELECT
+			SMR.ID,
+			SMR.ROLE_NAME,
+			SMR.ROLE_CODE,
+			SMR.DESCRIPTION,
+			SMR.CREATION_TIME,
+			SMR.UPDATING_TIME
+		FROM
+			SSMG_ROLE SMR
+		WHERE
+			SMR.LOGIC_DELETE_FLG = 'visible'
+	</select>
 </mapper>
