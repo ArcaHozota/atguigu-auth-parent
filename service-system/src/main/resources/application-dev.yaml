@@ -10,4 +10,5 @@ spring:  datasource:    driver-class-name: oracle.jdbc.OracleDriver
 mybatis:  configuration:    database-id: oracle
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*.xml
   type-aliases-package: jp.co.atguigu.model.entity
