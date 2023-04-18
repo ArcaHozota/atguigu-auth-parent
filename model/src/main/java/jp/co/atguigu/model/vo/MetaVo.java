@@ -3,7 +3,7 @@ package jp.co.atguigu.model.vo;
 import lombok.Data;
 
 /**
- * 顯示路由信息
+ * ローターのメッセージ
  */
 @Data
 public class MetaVo {
