@@ -9,9 +9,17 @@ import org.springframework.boot.test.context.SpringBootTest;
 import jp.co.atguigu.authsystem.mapper.RoleMapper;
 import jp.co.atguigu.model.entity.Role;
 
+/**
+ * ロール授権のマッパーインターフェステスト
+ *
+ * @author Administrator
+ */
 @SpringBootTest
 public class RoleMapperTest {
 
+	/**
+	 * ロールマッパー
+	 */
 	@Autowired
 	private RoleMapper roleMapper;
 
