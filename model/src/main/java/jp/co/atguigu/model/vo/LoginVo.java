@@ -3,7 +3,7 @@ package jp.co.atguigu.model.vo;
 import lombok.Data;
 
 /**
- * 登录对象
+ * 登錄對象
  */
 @Data
 public class LoginVo {
