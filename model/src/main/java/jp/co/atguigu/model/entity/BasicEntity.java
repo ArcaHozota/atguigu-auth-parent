@@ -1,4 +1,4 @@
-package jp.co.atguigu.model.common;
+package jp.co.atguigu.model.entity;
 
 import java.io.Serializable;
 import java.util.Date;

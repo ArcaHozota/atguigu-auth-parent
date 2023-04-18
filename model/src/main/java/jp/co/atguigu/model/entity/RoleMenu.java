@@ -2,7 +2,6 @@ package jp.co.atguigu.model.entity;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import jp.co.atguigu.model.common.BasicEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
