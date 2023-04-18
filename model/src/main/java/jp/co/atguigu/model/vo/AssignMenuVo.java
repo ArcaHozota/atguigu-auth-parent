@@ -6,6 +6,11 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+/**
+ * メニューの配分クエリVO
+ *
+ * @author Administrator
+ */
 @ApiModel(description = "分配菜單")
 @Data
 public class AssignMenuVo {
