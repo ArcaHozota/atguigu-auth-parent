@@ -5,7 +5,7 @@ import java.util.List;
 import lombok.Data;
 
 /**
- * 路由配置信息
+ * ローターの配置メッセージVO
  */
 @Data
 public class RouterVo {
