@@ -23,6 +23,9 @@ public class RoleMapperTest {
 	@Autowired
 	private RoleMapper roleMapper;
 
+	/**
+	 * マッパーテスト
+	 */
 	@Test
 	public void findAll() {
 		final List<Role> findAll = this.roleMapper.findAll();
