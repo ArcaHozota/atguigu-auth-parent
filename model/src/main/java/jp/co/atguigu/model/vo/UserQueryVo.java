@@ -22,12 +22,12 @@ public class UserQueryVo {
 	@ApiModelProperty(value = "創建時間·終")
 	private String createTimeEnd;
 
-	@ApiModelProperty(value = "角色名稱")
+	@ApiModelProperty(value = "角色ID")
 	private Long roleId;
 
-	@ApiModelProperty(value = "角色名稱")
+	@ApiModelProperty(value = "職位ID")
 	private Long postId;
 
-	@ApiModelProperty(value = "角色名稱")
+	@ApiModelProperty(value = "部門ID")
 	private Long deptId;
 }
