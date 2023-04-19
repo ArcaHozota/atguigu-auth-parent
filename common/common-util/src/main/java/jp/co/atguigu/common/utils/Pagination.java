@@ -197,7 +197,7 @@ public final class Pagination<T> {
 	}
 
 	/**
-	 * 前のページ、次のページ、最初の及び最後のページを取得する
+	 * 前のページ、次のページ、最初及び最後のページを取得する
 	 */
 	private void calcPage() {
 		if (this.navigatePageNums != null && this.navigatePageNums.length > 0) {
