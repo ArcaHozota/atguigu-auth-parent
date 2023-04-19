@@ -77,23 +77,23 @@ public final class Pagination<T> {
 	private int[] navigatePageNums;
 
 	/**
-	 * 生成Pagination對象
+	 * Paginationを取得する
 	 *
-	 * @param records      結果集
-	 * @param totalRecords 總記錄數
-	 * @param pageNum      當前頁
+	 * @param records      レコード
+	 * @param totalRecords すべてのレコード数
+	 * @param pageNum      当ページ
 	 */
 	public static <T> Pagination<T> of(final List<T> records, final int totalRecords, final int pageNum) {
 		return new Pagination<>(records, totalRecords, pageNum, 17, 5);
 	}
 
 	/**
-	 * 生成Pagination對象
+	 * Paginationを取得する
 	 *
-	 * @param records      結果集
-	 * @param totalRecords 總記錄數
-	 * @param pageNum      當前頁
-	 * @param pageSize     每頁大小
+	 * @param records      レコード
+	 * @param totalRecords すべてのレコード数
+	 * @param pageNum      当ページ
+	 * @param pageSize     ページサイズ
 	 */
 	public static <T> Pagination<T> of(final List<T> records, final int totalRecords, final int pageNum,
 			final int pageSize) {
@@ -101,13 +101,13 @@ public final class Pagination<T> {
 	}
 
 	/**
-	 * 生成Pagination對象
+	 * Paginationを取得する
 	 *
-	 * @param records       結果集
-	 * @param totalRecords  總記錄數
-	 * @param pageNum       當前頁
-	 * @param pageSize      每頁大小
-	 * @param navigatePages 導航條頁碼數
+	 * @param records       レコード
+	 * @param totalRecords  すべてのレコード数
+	 * @param pageNum       当ページ
+	 * @param pageSize      ページサイズ
+	 * @param navigatePages ナビゲーションのページ数
 	 */
 	public static <T> Pagination<T> of(final List<T> records, final int totalRecords, final int pageNum,
 			final int pageSize, final int navigatePages) {
