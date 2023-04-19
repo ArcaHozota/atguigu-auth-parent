@@ -79,18 +79,17 @@ public class SnowflakeIdGenerator {
 	protected synchronized long nextId() {
 		// 今の時間
 		long timestamp = System.currentTimeMillis();
-		// 如果当前时间小于上一次ID生成的时间戳，说明系统时钟回退过这个时候应当抛出异常
+		// 今の時間は前のタイムスタンプより早くと、エラーになります
 		if (timestamp < this.lastTimestamp) {
 			throw new RuntimeException(
 					String.format("Clock moved backwards. Refusing to generate id for %d milliseconds",
 							this.lastTimestamp - timestamp));
 		}
-		// 如果是同一时间生成的，则进行毫秒内序列
+		// 同じ時間であれば、シークエンスを使う
 		if (this.lastTimestamp == timestamp) {
 			this.sequence = (this.sequence + 1) & this.sequenceMask;
-			// 毫秒内序列溢出
 			if (this.sequence == 0) {
-				// 阻塞到下一个毫秒,获得新的时间戳
+				// 次のミリ秒までタイムスタンプえお取得する
 				timestamp = this.tillNextMillis(this.lastTimestamp);
 			}
 		}
@@ -106,10 +105,10 @@ public class SnowflakeIdGenerator {
 	}
 
 	/**
-	 * 阻塞到下一个毫秒，直到获得新的时间戳
+	 * 次のミリ秒までタイムスタンプえお取得する
 	 *
-	 * @param lastTimestamp 上次生成ID的时间截
-	 * @return 当前时间戳
+	 * @param lastTimestamp 前のタイムスタンプ
+	 * @return 今の時間
 	 */
 	private long tillNextMillis(final long lastTimestamp) {
 		long timestamp = System.currentTimeMillis();
