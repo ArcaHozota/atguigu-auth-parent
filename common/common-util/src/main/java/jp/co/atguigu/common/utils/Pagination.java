@@ -62,12 +62,12 @@ public final class Pagination<T> {
 	private int navigatePages;
 
 	/**
-	 * ナビゲーションの第一ページ
+	 * ナビゲーションの最初のページ
 	 */
 	private int naviFirstPage;
 
 	/**
-	 * ナビゲーションの最後ページ
+	 * ナビゲーションの最後のページ
 	 */
 	private int naviLastPage;
 
