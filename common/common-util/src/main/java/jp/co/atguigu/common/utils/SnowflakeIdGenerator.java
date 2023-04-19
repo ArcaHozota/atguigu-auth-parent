@@ -7,6 +7,7 @@ package jp.co.atguigu.common.utils;
  * @date 2019-06-12
  */
 public class SnowflakeIdGenerator {
+
 	// ==============================Fields===========================================
 	/** 初期値時間(2015-01-01) */
 	private final long timeEpoch = 1420041600000L;
