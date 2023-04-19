@@ -97,10 +97,8 @@ public class SnowflakeIdGenerator {
 		// 上次生成ID的时间截
 		this.lastTimestamp = timestamp;
 		// 移位并通过或运算拼到一起组成64位的ID
-		return ((timestamp - this.twepoch) << this.timestampLeftShift) //
-				| (this.datacenterId << this.datacenterIdShift) //
-				| (this.workerId << this.workerIdShift) //
-				| this.sequence;
+		return ((timestamp - this.twepoch) << this.timestampLeftShift) | (this.datacenterId << this.datacenterIdShift)
+				| (this.workerId << this.workerIdShift) | this.sequence;
 	}
 
 	/**
