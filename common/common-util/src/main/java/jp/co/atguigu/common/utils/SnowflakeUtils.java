@@ -3,20 +3,20 @@ package jp.co.atguigu.common.utils;
 import java.util.Random;
 
 /**
- * 雪花算法ID生成工具類
+ * 雪花のアルゴリズムID生成ツール
  *
  * @author Administrator
  */
 public final class SnowflakeUtils {
 
 	/**
-	 * 空參構造器
+	 * コンストラクタ
 	 */
 	private SnowflakeUtils() {
 	}
 
 	/**
-	 * 獲取下一位雪花ID
+	 * 次の雪花アルゴリズムIDを取得
 	 *
 	 * @return long ID
 	 */
