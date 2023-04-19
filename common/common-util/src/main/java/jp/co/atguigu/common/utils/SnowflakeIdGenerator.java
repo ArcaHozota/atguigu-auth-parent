@@ -77,6 +77,7 @@ public class SnowflakeIdGenerator {
 	 * @return long 雪花アルゴリズムID
 	 */
 	protected synchronized long nextId() {
+		// 今の時間
 		long timestamp = System.currentTimeMillis();
 		// 如果当前时间小于上一次ID生成的时间戳，说明系统时钟回退过这个时候应当抛出异常
 		if (timestamp < this.lastTimestamp) {
@@ -90,7 +91,7 @@ public class SnowflakeIdGenerator {
 			// 毫秒内序列溢出
 			if (this.sequence == 0) {
 				// 阻塞到下一个毫秒,获得新的时间戳
-				timestamp = this.tilNextMillis(this.lastTimestamp);
+				timestamp = this.tillNextMillis(this.lastTimestamp);
 			}
 		}
 		// 时间戳改变，毫秒内序列重置
@@ -110,7 +111,7 @@ public class SnowflakeIdGenerator {
 	 * @param lastTimestamp 上次生成ID的时间截
 	 * @return 当前时间戳
 	 */
-	private long tilNextMillis(final long lastTimestamp) {
+	private long tillNextMillis(final long lastTimestamp) {
 		long timestamp = System.currentTimeMillis();
 		while (timestamp <= lastTimestamp) {
 			timestamp = System.currentTimeMillis();
