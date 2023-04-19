@@ -52,10 +52,10 @@ public class SnowflakeIdGenerator {
 
 	// ==============================Constructors=====================================
 	/**
-	 * 构造函数
+	 * コンストラクタ
 	 *
-	 * @param workerId     工作ID (0~31)
-	 * @param datacenterId 数据中心ID (0~31)
+	 * @param workerId     ワークID
+	 * @param datacenterId データセンターID
 	 */
 	protected SnowflakeIdGenerator(final long workerId, final long datacenterId) {
 		if (workerId > this.maxWorkerId || workerId < 0) {
