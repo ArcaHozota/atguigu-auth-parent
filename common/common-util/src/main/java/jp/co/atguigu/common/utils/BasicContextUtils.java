@@ -19,7 +19,7 @@ public class BasicContextUtils {
 	private static final Timestamp CURRENT_TIME = new Timestamp(System.currentTimeMillis());
 
 	/**
-	 * 共通の保存処理サービス
+	 * 共通の保存処理ロジック
 	 *
 	 * @param aEntity 共通エンティティ
 	 */
@@ -31,7 +31,7 @@ public class BasicContextUtils {
 	}
 
 	/**
-	 * 共通の更新処理サービス
+	 * 共通の更新処理ロジック
 	 *
 	 * @param aEntity 共通エンティティ
 	 */
