@@ -145,9 +145,9 @@ public final class Pagination<T> {
 	}
 
 	/**
-	 * 根據導航條頁數進行計算
+	 * ナビゲーションのページ数によって色んな計算処理を行う
 	 *
-	 * @param navigatePages 導航條頁碼數量
+	 * @param navigatePages ナビゲーションのページ数
 	 */
 	private void calcByNavigatePages(final int navigatePages) {
 		// ナビゲーションのページ数を設定する
@@ -164,31 +164,29 @@ public final class Pagination<T> {
 	 * ナビゲーションページの数の集合を取得する
 	 */
 	private void calcNavigatePageNums() {
-		// 當總頁數小於或等於導航條頁碼數時
 		if (this.totalPages <= this.navigatePages) {
 			this.navigatePageNums = new int[this.totalPages];
 			for (int i = 0; i < this.totalPages; i++) {
 				this.navigatePageNums[i] = i + 1;
 			}
 		} else {
-			// 當總頁數大於導航條頁碼數時
 			this.navigatePageNums = new int[this.navigatePages];
 			int startNum = this.pageNum - this.navigatePages / 2;
 			int endNum = this.pageNum + this.navigatePages / 2;
 			if (startNum < 1) {
 				startNum = 1;
-				// 第一導航條頁
+				// 最初のナビゲーションページ
 				for (int i = 0; i < this.navigatePages; i++) {
 					this.navigatePageNums[i] = startNum++;
 				}
 			} else if (endNum > this.totalPages) {
 				endNum = this.totalPages;
-				// 最後導航條頁
+				// 最後のナビゲーションページ
 				for (int i = this.navigatePages - 1; i >= 0; i--) {
 					this.navigatePageNums[i] = endNum--;
 				}
 			} else {
-				// 所有中間頁
+				// 他のナビゲーションページ
 				for (int i = 0; i < this.navigatePages; i++) {
 					this.navigatePageNums[i] = startNum++;
 				}
