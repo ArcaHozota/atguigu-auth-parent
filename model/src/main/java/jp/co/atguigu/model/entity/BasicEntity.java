@@ -1,7 +1,7 @@
 package jp.co.atguigu.model.entity;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 import lombok.Data;
 
@@ -23,12 +23,12 @@ public class BasicEntity implements Serializable {
 	/**
 	 * 作成時間
 	 */
-	private LocalDateTime creationTime;
+	private Timestamp creationTime;
 
 	/**
 	 * 更新時間
 	 */
-	private LocalDateTime updatingTime;
+	private Timestamp updatingTime;
 
 	/**
 	 * 論理削除フラグ
