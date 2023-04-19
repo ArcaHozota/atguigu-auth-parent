@@ -16,7 +16,7 @@ public class BasicContextUtils {
 	/**
 	 * 記錄當前時間
 	 */
-	private static final Timestamp TIMESTAMP = new Timestamp(System.currentTimeMillis());
+	private static final Timestamp CURRENT_TIME = new Timestamp(System.currentTimeMillis());
 
 	/**
 	 * 通用保存處理
@@ -25,8 +25,8 @@ public class BasicContextUtils {
 	 */
 	public static void fillWithInsert(final BasicEntity aEntity) {
 		aEntity.setId(SnowflakeUtils.nextId());
-		aEntity.setCreationTime(TIMESTAMP);
-		aEntity.setUpdatingTime(TIMESTAMP);
+		aEntity.setCreationTime(CURRENT_TIME);
+		aEntity.setUpdatingTime(CURRENT_TIME);
 		aEntity.setLogicDeleteFlg(Constants.LOGIC_DELETE_FLGINITIAL);
 	}
 
@@ -36,6 +36,6 @@ public class BasicContextUtils {
 	 * @param aEntity 實體類
 	 */
 	public static void fillWithUpdate(final BasicEntity aEntity) {
-		aEntity.setUpdatingTime(TIMESTAMP);
+		aEntity.setUpdatingTime(CURRENT_TIME);
 	}
 }
