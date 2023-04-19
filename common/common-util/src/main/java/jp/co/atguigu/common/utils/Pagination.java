@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * 數據分頁
+ * 共通ページングクラス
  *
  * @author Administrator
  * @param <T>
@@ -12,67 +12,67 @@ import java.util.List;
 public final class Pagination<T> {
 
 	/**
-	 * 每頁數據
+	 * 毎ページのレコード
 	 */
 	private List<T> records;
 
 	/**
-	 * 當前頁碼
+	 * 当ページ
 	 */
 	private int pageNum;
 
 	/**
-	 * 每頁大小
+	 * ページサイズ
 	 */
 	private int pageSize;
 
 	/**
-	 * 總頁數
+	 * すべてのページ数
 	 */
 	private int totalPages;
 
 	/**
-	 * 總記錄數
+	 * すべてのレコード数
 	 */
 	private int totalRecords;
 
 	/**
-	 * 是否有前一頁
+	 * 前のページはあるか
 	 */
 	private boolean hasPreviousPage = false;
 
 	/**
-	 * 是否有後一頁
+	 * 次のページはあるか
 	 */
 	private boolean hasNextPage = false;
 
 	/**
-	 * 前一頁
+	 * 前のページ
 	 */
 	private int previousPage;
 
 	/**
-	 * 後一頁
+	 * 次のページ
 	 */
 	private int nextPage;
 
 	/**
-	 * 導航條頁碼數量
+	 * ナビゲーションのページ数
 	 */
 	private int navigatePages;
 
 	/**
-	 * 導航條第一頁
+	 * ナビゲーションの第一ページ
 	 */
 	private int naviFirstPage;
 
 	/**
-	 * 導航條最後一頁
+	 * ナビゲーションの最後ページ
 	 */
 	private int naviLastPage;
 
 	/**
-	 * 所有導航頁號碼
+	 * ナビゲーションのページ数の集合
 	 */
 	private int[] navigatePageNums;
 
