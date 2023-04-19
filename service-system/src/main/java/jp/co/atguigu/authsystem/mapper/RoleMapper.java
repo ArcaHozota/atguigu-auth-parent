@@ -20,4 +20,11 @@ public interface RoleMapper {
 	 * @return List<Role>
 	 */
 	List<Role> findAll();
+
+	/**
+	 * データを保存する
+	 *
+	 * @param role ロールエンティティ
+	 */
+	void saveById(Role role);
 }
