@@ -8,12 +8,12 @@ package jp.co.atguigu.common.constants;
 public final class Constants {
 
 	/**
-	 * 邏輯刪除初始標志
+	 * 論理削除初期値
 	 */
 	public static final String LOGIC_DELETE_FLGINITIAL = "visible";
 
 	/**
-	 * 邏輯刪除標志
+	 * 論理削除フラグ
 	 */
 	public static final String LOGIC_DELETE_FLG = "removed";
 }
