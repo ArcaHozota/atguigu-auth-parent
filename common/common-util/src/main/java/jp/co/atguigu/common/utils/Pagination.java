@@ -153,7 +153,7 @@ public final class Pagination<T> {
 		// 設置導航條頁碼數量
 		this.setNavigatePages(navigatePages);
 		// 計算導航頁
-		this.calcNavigatepageNums();
+		this.calcNavigatePageNums();
 		// 計算前後頁，第一頁以及最後頁
 		this.calcPage();
 		// 判定頁面邊界
@@ -161,9 +161,9 @@ public final class Pagination<T> {
 	}
 
 	/**
-	 * 計算導航頁
+	 * ナビゲーションページの数の集合を取得する
 	 */
-	private void calcNavigatepageNums() {
+	private void calcNavigatePageNums() {
 		// 當總頁數小於或等於導航條頁碼數時
 		if (this.totalPages <= this.navigatePages) {
 			this.navigatePageNums = new int[this.totalPages];
