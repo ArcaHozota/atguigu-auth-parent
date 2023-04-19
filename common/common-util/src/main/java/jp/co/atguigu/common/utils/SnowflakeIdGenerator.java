@@ -3,7 +3,7 @@ package jp.co.atguigu.common.utils;
 /**
  * 雪花のアルゴリズムID生成クラス
  *
- * @author: JCccc
+ * @author JCccc
  * @date 2019-06-12
  */
 public class SnowflakeIdGenerator {

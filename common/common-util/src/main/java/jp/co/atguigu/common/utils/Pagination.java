@@ -197,7 +197,7 @@ public final class Pagination<T> {
 	}
 
 	/**
-	 * 計算前後頁，第一頁以及最後頁
+	 * 前のページ、次のページ、最初の及び最後のページを取得する
 	 */
 	private void calcPage() {
 		if (this.navigatePageNums != null && this.navigatePageNums.length > 0) {
@@ -213,7 +213,7 @@ public final class Pagination<T> {
 	}
 
 	/**
-	 * 判定頁面邊界
+	 * ページングエッジを判断する
 	 */
 	private void discernPageBoundary() {
 		this.hasPreviousPage = this.pageNum > 1;
@@ -221,7 +221,7 @@ public final class Pagination<T> {
 	}
 
 	/**
-	 * 是否包含内容
+	 * 内容はあるかどうかを判断する
 	 */
 	public boolean hasContent() {
 		return this.records.size() > 0;
