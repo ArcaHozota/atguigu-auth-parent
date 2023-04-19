@@ -18,17 +18,39 @@
 		<result column="LOGIC_DELETE_FLG" jdbcType="NVARCHAR"
 			property="logicDeleteFlg" />
 	</resultMap>
+	<insert id="saveById" 
+		parameterType="jp.co.atguigu.model.entity.Role">
+		INSERT 
+		INTO SSMG_ROLE( 
+		    ID, 
+		    ROLE_NAME, 
+		    ROLE_CODE, 
+		    DESCRIPTION, 
+		    CREATION_TIME, 
+		    UPDATING_TIME, 
+		    LOGIC_DELETE_FLG
+		) 
+		VALUES ( 
+		    #{id,jdbcType=NUMERIC}, 
+		    #{roleName,jdbcType=NVARCHAR},
+		    #{roleCode,jdbcType=NVARCHAR},
+		    #{description,jdbcType=NVARCHAR},
+		    #{creationTime,jdbcType=DATE},
+		    #{updatingTime,jdbcType=DATE},
+		    #{logicDeleteFlg,jdbcType=NVARCHAR}
+		)
+	</insert>
 	<select id="findAll" resultMap="BasicResultMap">
 		SELECT
-			SMR.ID,
-			SMR.ROLE_NAME,
-			SMR.ROLE_CODE,
-			SMR.DESCRIPTION,
-			SMR.CREATION_TIME,
-			SMR.UPDATING_TIME
+		    SMR.ID, 
+		    SMR.ROLE_NAME, 
+		    SMR.ROLE_CODE, 
+		    SMR.DESCRIPTION, 
+		    SMR.CREATION_TIME, 
+		    SMR.UPDATING_TIME 
 		FROM
-			SSMG_ROLE SMR
+		    SSMG_ROLE SMR 
 		WHERE
-			SMR.LOGIC_DELETE_FLG = 'visible'
+		    SMR.LOGIC_DELETE_FLG = 'visible'
 	</select>
 </mapper>
