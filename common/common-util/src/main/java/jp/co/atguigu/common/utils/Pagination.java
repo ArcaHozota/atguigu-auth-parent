@@ -72,7 +72,7 @@ public final class Pagination<T> {
 	private int naviLastPage;
 
 	/**
-	 * ナビゲーションのページ数の集合
+	 * ナビゲーションページの数の集合
 	 */
 	private int[] navigatePageNums;
 

@@ -1,7 +1,7 @@
 package jp.co.atguigu.common.constants;
 
 /**
- * 項目常量定義類
+ * プロジェクトのコンスタント定義クラス
  *
  * @author Administrator
  */
