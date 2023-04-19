@@ -6,7 +6,7 @@ import jp.co.atguigu.common.constants.Constants;
 import jp.co.atguigu.model.entity.BasicEntity;
 
 /**
- * 通用插入更新自動填充類
+ * 共通更新及び保存処理クラス
  *
  * @author Administrator
  * @date 2022-11-18
@@ -14,14 +14,14 @@ import jp.co.atguigu.model.entity.BasicEntity;
 public class BasicContextUtils {
 
 	/**
-	 * 記錄當前時間
+	 * 今の時間
 	 */
 	private static final Timestamp CURRENT_TIME = new Timestamp(System.currentTimeMillis());
 
 	/**
-	 * 通用保存處理
+	 * 共通の保存処理サービス
 	 *
-	 * @param aEntity 實體類
+	 * @param aEntity 共通エンティティ
 	 */
 	public static void fillWithInsert(final BasicEntity aEntity) {
 		aEntity.setId(SnowflakeUtils.nextId());
@@ -31,9 +31,9 @@ public class BasicContextUtils {
 	}
 
 	/**
-	 * 通用更新處理
+	 * 共通の更新処理サービス
 	 *
-	 * @param aEntity 實體類
+	 * @param aEntity 共通エンティティ
 	 */
 	public static void fillWithUpdate(final BasicEntity aEntity) {
 		aEntity.setUpdatingTime(CURRENT_TIME);
