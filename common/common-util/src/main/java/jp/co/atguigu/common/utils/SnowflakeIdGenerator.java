@@ -54,8 +54,8 @@ public class SnowflakeIdGenerator {
 	/**
 	 * コンストラクタ
 	 *
-	 * @param workerId     ワークID
-	 * @param datacenterId データセンターID
+	 * @param workerId     ワークID(最大値は31)
+	 * @param datacenterId データセンターID(最大値は31)
 	 */
 	protected SnowflakeIdGenerator(final long workerId, final long datacenterId) {
 		if (workerId > this.maxWorkerId || workerId < 0) {
