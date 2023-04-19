@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
@@ -15,7 +14,6 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-@NoArgsConstructor
 public final class Pagination<T> {
 
 	/**
