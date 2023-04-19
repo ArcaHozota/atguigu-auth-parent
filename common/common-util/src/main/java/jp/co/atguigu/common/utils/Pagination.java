@@ -150,13 +150,13 @@ public final class Pagination<T> {
 	 * @param navigatePages 導航條頁碼數量
 	 */
 	private void calcByNavigatePages(final int navigatePages) {
-		// 設置導航條頁碼數量
+		// ナビゲーションのページ数を設定する
 		this.setNavigatePages(navigatePages);
-		// 計算導航頁
+		// ナビゲーションページの数の集合を取得する
 		this.calcNavigatePageNums();
-		// 計算前後頁，第一頁以及最後頁
+		// 前のページ、次のページ、最初及び最後のページを取得する
 		this.calcPage();
-		// 判定頁面邊界
+		// ページングエッジを判断する
 		this.discernPageBoundary();
 	}
 
