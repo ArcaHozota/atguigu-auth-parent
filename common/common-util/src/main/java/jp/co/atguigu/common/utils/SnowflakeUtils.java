@@ -20,7 +20,7 @@ public final class SnowflakeUtils {
 	 *
 	 * @return long ID
 	 */
-	public static long nextId() {
+	protected static long nextId() {
 		final Random rd = new Random();
 		final int nextInt1 = rd.nextInt(31);
 		final int nextInt2 = rd.nextInt(31);
