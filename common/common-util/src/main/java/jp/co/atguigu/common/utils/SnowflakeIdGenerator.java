@@ -92,14 +92,13 @@ public class SnowflakeIdGenerator {
 				// 次のミリ秒までタイムスタンプえお取得する
 				timestamp = this.tillNextMillis(this.lastTimestamp);
 			}
-		}
-		// 时间戳改变，毫秒内序列重置
-		else {
+		} else {
+			// タイムスタンプが変えれば、シークエンスをリセットする
 			this.sequence = 0L;
 		}
-		// 上次生成ID的时间截
+		// 前のタイムスタンプとして保存
 		this.lastTimestamp = timestamp;
-		// 移位并通过或运算拼到一起组成64位的ID
+		// 新たな雪花アルゴリズムIDを生成
 		return ((timestamp - this.timeEpoch) << this.timestampLeftShift) | (this.datacenterId << this.datacenterIdShift)
 				| (this.workerId << this.workerIdShift) | this.sequence;
 	}
