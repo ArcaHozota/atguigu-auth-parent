@@ -115,13 +115,13 @@ public final class Pagination<T> {
 	}
 
 	/**
-	 * 封裝Pagination對象
+	 * コンストラクタ
 	 *
-	 * @param records       結果集
-	 * @param totalRecords  總記錄數
-	 * @param pageNum       當前頁
-	 * @param pageSize      每頁大小
-	 * @param navigatePages 導航條頁碼數
+	 * @param records       レコード
+	 * @param totalRecords  すべてのレコード数
+	 * @param pageNum       当ページ
+	 * @param pageSize      ページサイズ
+	 * @param navigatePages ナビゲーションのページ数
 	 */
 	private Pagination(final List<T> records, final int totalRecords, final int pageNum, final int pageSize,
 			final int navigatePages) {
@@ -139,7 +139,7 @@ public final class Pagination<T> {
 			this.totalRecords = 0;
 			this.totalPages = 1;
 		} else {
-			throw new RuntimeException("數據集合類型錯誤！");
+			throw new RuntimeException("データのコレクションは間違いました。");
 		}
 		this.calcByNavigatePages(navigatePages);
 	}
