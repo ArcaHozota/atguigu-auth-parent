@@ -12,7 +12,7 @@ import jp.co.atguigu.model.entity.Role;
 public interface RoleService {
 
 	/**
-	 * すべてのロール情報を取得する
+	 * すべてのロール情報を抽出する
 	 *
 	 * @return List<Role>
 	 */
