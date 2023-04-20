@@ -25,7 +25,7 @@ public class RoleServiceImpl implements RoleService {
 	private RoleMapper roleMapper;
 
 	/**
-	 * すべてのロール情報を取得する
+	 * すべてのロール情報を抽出する
 	 *
 	 * @return List<Role>
 	 */
