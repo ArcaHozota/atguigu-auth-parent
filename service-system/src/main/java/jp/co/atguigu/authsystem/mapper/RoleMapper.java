@@ -27,4 +27,11 @@ public interface RoleMapper {
 	 * @param role ロールエンティティ
 	 */
 	void saveById(Role role);
+
+	/**
+	 * データを削除する(論理削除)
+	 *
+	 * @param id ロールID
+	 */
+	void removeById(Long id);
 }
