@@ -1,22 +1,17 @@
 package jp.co.atguigu.authsystem.config;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.RestController;
 
 import springfox.documentation.builders.ApiInfoBuilder;
-import springfox.documentation.builders.ParameterBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.schema.ModelRef;
+import springfox.documentation.oas.annotations.EnableOpenApi;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
-import springfox.documentation.service.Parameter;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 
 /**
  * スワーガーのセッティングファイル
@@ -24,25 +19,20 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
  * @author Administrator
  */
 @Configuration
-@EnableSwagger2WebMvc
+@EnableOpenApi
 public class SwaggerConfiguration {
 
 	@Bean
 	protected Docket adminApiConfig() {
-		final List<Parameter> pars = new ArrayList<>();
-		final ParameterBuilder tokenPar = new ParameterBuilder();
-		tokenPar.name("token").description("用户token").defaultValue("").modelRef(new ModelRef("string"))
-				.parameterType("header").required(false).build();
-		pars.add(tokenPar.build());
-		// ヘーダ引数を配する
-		return new Docket(DocumentationType.SWAGGER_2).groupName("adminApi").apiInfo(this.adminApiInfo()).select()
+		return new Docket(DocumentationType.OAS_30).apiInfo(this.apiInfo()).groupName("SwaggerGroupApi").select()
 				// パスadminのみ表示されます
-				.apis(RequestHandlerSelectors.basePackage("com.atguigu")).paths(PathSelectors.regex("/admin/.*"))
-				.build().globalOperationParameters(pars);
+				.apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
+				.paths(PathSelectors.regex("/admin/.*")).build();
 	}
 
-	private ApiInfo adminApiInfo() {
-		return new ApiInfoBuilder().title("バックエンド管理システム").description("バックエンド管理システムの定義ファイル").version("1.0")
-				.contact(new Contact("atguigu", "http://atguigu.co.jp", "toshiba@guigu.com")).build();
+	@Bean
+	protected ApiInfo apiInfo() {
+		return new ApiInfoBuilder().title("バックエンド管理システム").description("バックエンド管理システムの定義ファイル")
+				.contact(new Contact("atguigu", "http://atguigu.co.jp", "toshiba@guigu.com")).version("1.0").build();
 	}
 }
