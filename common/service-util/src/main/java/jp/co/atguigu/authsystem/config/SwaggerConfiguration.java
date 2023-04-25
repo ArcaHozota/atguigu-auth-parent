@@ -1,4 +1,4 @@
-package jp.co.atguigu.service.config;
+package jp.co.atguigu.authsystem.config;
 
 import java.util.ArrayList;
 import java.util.List;
