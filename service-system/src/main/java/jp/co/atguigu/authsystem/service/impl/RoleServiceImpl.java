@@ -33,4 +33,14 @@ public class RoleServiceImpl implements RoleService {
 	public List<Role> getAll() {
 		return this.roleMapper.findAll();
 	}
+
+	/**
+	 * ロール情報を削除する
+	 *
+	 * @param id ロールID
+	 */
+	@Override
+	public void remove(final Long id) {
+		this.roleMapper.removeById(id);
+	}
 }

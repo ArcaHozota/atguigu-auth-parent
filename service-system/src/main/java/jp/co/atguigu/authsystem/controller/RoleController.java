@@ -4,7 +4,9 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,5 +36,15 @@ public class RoleController {
 	@GetMapping("/findAll")
 	public List<Role> getAllRoles() {
 		return this.roleService.getAll();
+	}
+
+	/**
+	 * ロール情報を削除する
+	 *
+	 * @param id ロールID
+	 */
+	@DeleteMapping("/remove/{id}")
+	public void removeRole(@PathVariable final Long id) {
+		this.roleService.remove(id);
 	}
 }

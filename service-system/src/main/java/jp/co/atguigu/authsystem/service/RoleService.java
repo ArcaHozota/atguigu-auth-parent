@@ -17,4 +17,11 @@ public interface RoleService {
 	 * @return List<Role>
 	 */
 	List<Role> getAll();
+
+	/**
+	 * ロール情報を削除する
+	 *
+	 * @param id ロールID
+	 */
+	void remove(Long id);
 }
