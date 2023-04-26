@@ -5,10 +5,12 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import jp.co.atguigu.authsystem.mapper.RoleMapper;
 import jp.co.atguigu.authsystem.service.RoleService;
 import jp.co.atguigu.model.entity.Role;
+import oracle.jdbc.driver.OracleSQLException;
 
 /**
  * ロール情報の実装クラス
@@ -16,6 +18,7 @@ import jp.co.atguigu.model.entity.Role;
  * @author Administrator
  */
 @Service
+@Transactional(rollbackFor = OracleSQLException.class)
 public class RoleServiceImpl implements RoleService {
 
 	/**
