@@ -57,6 +57,14 @@ public class Result<T> {
 		return result;
 	}
 
+	/**
+	 * 結果を返却する
+	 *
+	 * @param <T>            ジェネリック
+	 * @param body           データ
+	 * @param resultCodeEnum 返却コード
+	 * @return Result<T>
+	 */
 	public static <T> Result<T> build(final T body, final ResultCodeEnum resultCodeEnum) {
 		final Result<T> result = build(body);
 		result.setCode(resultCodeEnum.getCode());
@@ -68,13 +76,6 @@ public class Result<T> {
 		return Result.ok(null);
 	}
 
-	/**
-	 * 操作成功
-	 *
-	 * @param data baseCategory1List
-	 * @param <T>
-	 * @return
-	 */
 	public static <T> Result<T> ok(final T data) {
 		return build(data, ResultCodeEnum.SUCCESS);
 	}
@@ -83,13 +84,6 @@ public class Result<T> {
 		return Result.fail(null);
 	}
 
-	/**
-	 * 操作失败
-	 *
-	 * @param data
-	 * @param <T>
-	 * @return
-	 */
 	public static <T> Result<T> fail(final T data) {
 		return build(data, ResultCodeEnum.FAILURE);
 	}
