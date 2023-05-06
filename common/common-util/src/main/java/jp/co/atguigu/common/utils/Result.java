@@ -72,27 +72,65 @@ public class Result<T> {
 		return result;
 	}
 
+	/**
+	 * 成功した結果を返却する
+	 *
+	 * @param <T> ジェネリック
+	 * @return Result<T>
+	 */
 	public static <T> Result<T> ok() {
 		return Result.ok(null);
 	}
 
+	/**
+	 * 成功した結果を返却する
+	 *
+	 * @param <T>  ジェネリック
+	 * @param data データ
+	 * @return Result<T>
+	 */
 	public static <T> Result<T> ok(final T data) {
 		return build(data, ResultCodeEnum.SUCCESS);
 	}
 
+	/**
+	 * 失敗した結果を返却する
+	 *
+	 * @param <T> ジェネリック
+	 * @return Result<T>
+	 */
 	public static <T> Result<T> fail() {
 		return Result.fail(null);
 	}
 
+	/**
+	 * 失敗した結果を返却する
+	 *
+	 * @param <T>  ジェネリック
+	 * @param data データ
+	 * @return Result<T>
+	 */
 	public static <T> Result<T> fail(final T data) {
 		return build(data, ResultCodeEnum.FAILURE);
 	}
 
+	/**
+	 * メッセージを設定する
+	 *
+	 * @param msg メッセージ
+	 * @return Result<T>
+	 */
 	public Result<T> message(final String msg) {
 		this.setMessage(msg);
 		return this;
 	}
 
+	/**
+	 * ステータスコードを設定する
+	 *
+	 * @param code ステータスコード
+	 * @return Result<T>
+	 */
 	public Result<T> code(final Integer code) {
 		this.setCode(code);
 		return this;
