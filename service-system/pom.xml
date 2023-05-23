@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>jp.co.atguigu</groupId>
-		<artifactId>guigu-auth-parent</artifactId>
+		<artifactId>atguigu-auth-parent</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>service-system</artifactId>
