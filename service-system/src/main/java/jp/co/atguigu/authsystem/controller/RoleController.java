@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import jp.co.atguigu.authsystem.service.RoleService;
+import jp.co.atguigu.common.utils.Pagination;
 import jp.co.atguigu.common.utils.Result;
 import jp.co.atguigu.model.entity.Role;
+import jp.co.atguigu.model.vo.RoleQueryVo;
 
 /**
  * ロールコントローラー
@@ -66,7 +68,11 @@ public class RoleController {
 	 */
 	@ApiOperation("ページング")
 	@DeleteMapping("/{page}/{limit}")
-	public Result<?> getRolePages(@PathVariable final Long page, @PathVariable final Long limit) {
-		return null;
+	public Result<Pagination<Role>> getRolePages(@PathVariable final Long page, @PathVariable final Long limit,
+			final RoleQueryVo roleQueryVo) {
+		// ページングオブジェクト
+		final Pagination<Role> pages = this.roleService.pagination(page, limit, roleQueryVo);
+		// ページングオブジェクトを返却する
+		return Result.ok(pages);
 	}
 }

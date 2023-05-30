@@ -60,4 +60,15 @@
 		WHERE
 		    SMR.LOGIC_DELETE_FLG = 'visible'
 	</select>
+	<select id="findRolePagesCnt" resultMap="BasicResultMap">
+		SELECT
+		    COUNT(1) AS RECORD
+		FROM
+		    SSMG_ROLE SMR 
+		WHERE
+		    SMR.LOGIC_DELETE_FLG = 'visible'
+		<if test="vo.roleName != null &amp; vo.roleName != ''">
+			AND SMR.ROLE_NAME LIKE CONCAT('%', CONCAT(#{vo.roleName}, '%'))
+		</if>
+	</select>
 </mapper>

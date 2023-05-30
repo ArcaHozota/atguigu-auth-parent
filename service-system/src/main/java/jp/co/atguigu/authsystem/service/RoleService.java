@@ -2,7 +2,9 @@ package jp.co.atguigu.authsystem.service;
 
 import java.util.List;
 
+import jp.co.atguigu.common.utils.Pagination;
 import jp.co.atguigu.model.entity.Role;
+import jp.co.atguigu.model.vo.RoleQueryVo;
 
 /**
  * ロール情報のサービスインターフェス
@@ -25,4 +27,14 @@ public interface RoleService {
 	 * @return true:成功, false:削除失敗
 	 */
 	boolean remove(Long id);
+
+	/**
+	 * ページング検索
+	 *
+	 * @param pageNum  ページナンバー
+	 * @param pageSize ページサイズ
+	 * @param queryVo  クエリVO
+	 * @return Pagination<Role>
+	 */
+	Pagination<Role> pagination(Long pageNum, Long pageSize, RoleQueryVo queryVo);
 }

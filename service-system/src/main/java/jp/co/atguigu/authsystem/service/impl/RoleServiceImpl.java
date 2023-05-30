@@ -9,7 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import jp.co.atguigu.authsystem.mapper.RoleMapper;
 import jp.co.atguigu.authsystem.service.RoleService;
+import jp.co.atguigu.common.utils.Pagination;
 import jp.co.atguigu.model.entity.Role;
+import jp.co.atguigu.model.vo.RoleQueryVo;
 import oracle.jdbc.driver.OracleSQLException;
 
 /**
@@ -50,5 +52,13 @@ public class RoleServiceImpl implements RoleService {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public Pagination<Role> pagination(final Long pageNum, final Long pageSize, final RoleQueryVo queryVo) {
+		final long pageMin = (pageNum - 1) * pageSize;
+		final long pageMax = pageNum * pageSize;
+		final Integer pagesCnt = this.roleMapper.findRolePagesCnt(queryVo);
+		return null;
 	}
 }

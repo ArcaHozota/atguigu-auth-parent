@@ -3,8 +3,10 @@ package jp.co.atguigu.authsystem.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import jp.co.atguigu.model.entity.Role;
+import jp.co.atguigu.model.vo.RoleQueryVo;
 
 /**
  * ロール授権のマッパーインターフェス
@@ -34,4 +36,12 @@ public interface RoleMapper {
 	 * @param id ロールID
 	 */
 	Integer removeById(Long id);
+
+	/**
+	 * すべてコード数の検索
+	 *
+	 * @param queryVo クエリVO
+	 * @return Integer
+	 */
+	Integer findRolePagesCnt(@Param("vo") RoleQueryVo queryVo);
 }
