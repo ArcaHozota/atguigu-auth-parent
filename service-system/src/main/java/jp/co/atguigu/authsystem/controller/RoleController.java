@@ -58,4 +58,15 @@ public class RoleController {
 		}
 		return Result.fail();
 	}
+
+	/**
+	 * ページング検索
+	 *
+	 * @param id ロールID
+	 */
+	@ApiOperation("ページング")
+	@DeleteMapping("/{page}/{limit}")
+	public Result<?> getRolePages(@PathVariable final Long page, @PathVariable final Long limit) {
+		return null;
+	}
 }
