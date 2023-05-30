@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import jp.co.atguigu.authsystem.service.RoleService;
+import jp.co.atguigu.common.utils.Result;
 import jp.co.atguigu.model.entity.Role;
 
 /**
@@ -49,7 +50,11 @@ public class RoleController {
 	 */
 	@ApiOperation("論理削除")
 	@DeleteMapping("/remove/{id}")
-	public void removeRole(@PathVariable final Long id) {
-		this.roleService.remove(id);
+	public Result<?> removeRole(@PathVariable final Long id) {
+		final boolean successOrNot = this.roleService.remove(id);
+		if (successOrNot) {
+			return Result.ok();
+		}
+		return Result.fail();
 	}
 }

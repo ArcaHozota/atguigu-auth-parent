@@ -22,6 +22,7 @@ public interface RoleService {
 	 * ロール情報を削除する
 	 *
 	 * @param id ロールID
+	 * @return true:成功, false:削除失敗
 	 */
 	boolean remove(Long id);
 }
