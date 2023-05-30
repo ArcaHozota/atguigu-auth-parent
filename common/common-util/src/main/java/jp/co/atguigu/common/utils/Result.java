@@ -50,7 +50,7 @@ public class Result<T> {
 	 * @param message メッセージ
 	 * @return Result<T>
 	 */
-	private static <T> Result<T> build(final T body, final Integer code, final String message) {
+	protected static <T> Result<T> build(final T body, final Integer code, final String message) {
 		final Result<T> result = build(body);
 		result.setCode(code);
 		result.setMessage(message);

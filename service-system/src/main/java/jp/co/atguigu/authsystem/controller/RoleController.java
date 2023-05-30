@@ -39,8 +39,9 @@ public class RoleController {
 	 */
 	@ApiOperation("全件検索")
 	@GetMapping("/findAll")
-	public List<Role> getAllRoles() {
-		return this.roleService.getAll();
+	public Result<List<Role>> getAllRoles() {
+		final List<Role> roles = this.roleService.getAll();
+		return Result.ok(roles);
 	}
 
 	/**
