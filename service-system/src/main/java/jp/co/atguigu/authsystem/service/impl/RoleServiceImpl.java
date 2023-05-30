@@ -43,7 +43,11 @@ public class RoleServiceImpl implements RoleService {
 	 * @param id ロールID
 	 */
 	@Override
-	public void remove(final Long id) {
-		this.roleMapper.removeById(id);
+	public boolean remove(final Long id) {
+		final Integer removeById = this.roleMapper.removeById(id);
+		if (removeById > 0) {
+			return true;
+		}
+		return false;
 	}
 }

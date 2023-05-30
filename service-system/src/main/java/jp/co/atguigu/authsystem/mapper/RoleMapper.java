@@ -33,5 +33,5 @@ public interface RoleMapper {
 	 *
 	 * @param id ロールID
 	 */
-	void removeById(Long id);
+	Integer removeById(Long id);
 }

@@ -23,5 +23,5 @@ public interface RoleService {
 	 *
 	 * @param id ロールID
 	 */
-	void remove(Long id);
+	boolean remove(Long id);
 }
