@@ -4,40 +4,40 @@ package jp.co.atguigu.common.utils;
  * 雪花のアルゴリズムID生成クラス
  *
  * @author JCccc
- * @date 2019-06-12
+ * @since 2019-06-12
  */
 public class SnowflakeIdGenerator {
 
 	// ==============================Fields===========================================
 	/** 初期値時間(2015-01-01) */
-	private final long timeEpoch = 1420041600000L;
+	private static final long TIME_EPOCH = 1420041600000L;
 
 	/** ワークIDの桁数 */
-	private final long workerIdBits = 5L;
+	private static final long WORKER_ID_BITS = 5L;
 
 	/** データセンターIDの桁数 */
-	private final long datacenterIdBits = 5L;
+	private static final long DATACENTER_ID_BITS = 5L;
 
 	/** 最大のワークID */
-	private final long maxWorkerId = -1L ^ (-1L << this.workerIdBits);
+	private final long maxWorkerId = -1L ^ (-1L << WORKER_ID_BITS);
 
 	/** 最大のデータセンターID */
-	private final long maxDatacenterId = -1L ^ (-1L << this.datacenterIdBits);
+	private final long maxDatacenterId = -1L ^ (-1L << DATACENTER_ID_BITS);
 
 	/** シークエンスの桁数 */
-	private final long sequenceBits = 12L;
+	private static final long SEQUENCE_BITS = 12L;
 
 	/** ワークIDのシフト桁数 */
-	private final long workerIdShift = this.sequenceBits;
+	private final long workerIdShift = SEQUENCE_BITS;
 
 	/** データセンターIDのシフト桁数 */
-	private final long datacenterIdShift = this.sequenceBits + this.workerIdBits;
+	private final long datacenterIdShift = SEQUENCE_BITS + WORKER_ID_BITS;
 
 	/** タイムスタンプのシフト桁数 */
-	private final long timestampLeftShift = this.sequenceBits + this.workerIdBits + this.datacenterIdBits;
+	private final long timestampLeftShift = SEQUENCE_BITS + WORKER_ID_BITS + DATACENTER_ID_BITS;
 
 	/** シークエンスマスク */
-	private final long sequenceMask = -1L ^ (-1L << this.sequenceBits);
+	private final long sequenceMask = -1L ^ (-1L << SEQUENCE_BITS);
 
 	/** ワークID */
 	private final long workerId;
@@ -100,7 +100,7 @@ public class SnowflakeIdGenerator {
 		// 前のタイムスタンプとして保存
 		this.lastTimestamp = timestamp;
 		// 新たな雪花アルゴリズムIDを生成
-		return ((timestamp - this.timeEpoch) << this.timestampLeftShift) | (this.datacenterId << this.datacenterIdShift)
+		return ((timestamp - TIME_EPOCH) << this.timestampLeftShift) | (this.datacenterId << this.datacenterIdShift)
 				| (this.workerId << this.workerIdShift) | this.sequence;
 	}
 

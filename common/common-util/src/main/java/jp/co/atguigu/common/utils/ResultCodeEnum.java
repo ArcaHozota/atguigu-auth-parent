@@ -73,7 +73,7 @@ public enum ResultCodeEnum {
 	/**
 	 * アカウントは廃止された
 	 */
-	ACCOUNT_STOP(217, "アカウントは廃止された"),
+	ACCOUNT_STOP(217, "アカウントは廃止されました"),
 
 	/**
 	 * ノードエラー
@@ -83,12 +83,12 @@ public enum ResultCodeEnum {
 	/**
 	 * ステータスコード
 	 */
-	private Integer code;
+	private final Integer code;
 
 	/**
 	 * メッセージ
 	 */
-	private String message;
+	private final String message;
 
 	/**
 	 * コンストラクタ
@@ -96,7 +96,7 @@ public enum ResultCodeEnum {
 	 * @param code    ステータスコード
 	 * @param message メッセージ
 	 */
-	private ResultCodeEnum(final Integer code, final String message) {
+	ResultCodeEnum(final Integer code, final String message) {
 		this.code = code;
 		this.message = message;
 	}
