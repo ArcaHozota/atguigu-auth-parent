@@ -169,27 +169,24 @@ public final class Pagination<T> {
             for (int i = 0; i < this.totalPages; i++) {
                 this.navigatePageNums[i] = i + 1;
             }
+            return;
+        }
+        this.navigatePageNums = new int[this.navigatePages];
+        int startNum = this.pageNum - this.navigatePages / 2;
+        int endNum = this.pageNum + this.navigatePages / 2;
+        if (endNum > this.totalPages && startNum >= 1) {
+            endNum = this.totalPages;
+            // 最後のナビゲーションページ
+            for (int i = this.navigatePages - 1; i >= 0; i--) {
+                this.navigatePageNums[i] = endNum--;
+            }
         } else {
-            this.navigatePageNums = new int[this.navigatePages];
-            int startNum = this.pageNum - this.navigatePages / 2;
-            int endNum = this.pageNum + this.navigatePages / 2;
             if (startNum < 1) {
                 startNum = 1;
-                // 最初のナビゲーションページ
-                for (int i = 0; i < this.navigatePages; i++) {
-                    this.navigatePageNums[i] = startNum++;
-                }
-            } else if (endNum > this.totalPages) {
-                endNum = this.totalPages;
-                // 最後のナビゲーションページ
-                for (int i = this.navigatePages - 1; i >= 0; i--) {
-                    this.navigatePageNums[i] = endNum--;
-                }
-            } else {
-                // 他のナビゲーションページ
-                for (int i = 0; i < this.navigatePages; i++) {
-                    this.navigatePageNums[i] = startNum++;
-                }
+            }
+            // 他のナビゲーションページ
+            for (int i = 0; i < this.navigatePages; i++) {
+                this.navigatePageNums[i] = startNum++;
             }
         }
     }
