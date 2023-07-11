@@ -9,10 +9,13 @@ import java.util.Random;
  */
 public final class SnowflakeUtils {
 
+	private static final Random random = new Random();
+
 	/**
 	 * コンストラクタ
 	 */
 	private SnowflakeUtils() {
+		throw new IllegalStateException("Utility class");
 	}
 
 	/**
@@ -20,10 +23,9 @@ public final class SnowflakeUtils {
 	 *
 	 * @return long ID
 	 */
-	protected static long nextId() {
-		final Random rd = new Random();
-		final int nextInt1 = rd.nextInt(31);
-		final int nextInt2 = rd.nextInt(31);
+	static long nextId() {
+		final int nextInt1 = random.nextInt(31);
+		final int nextInt2 = random.nextInt(31);
 		return new SnowflakeIdGenerator(nextInt1, nextInt2).nextId();
 	}
 }
