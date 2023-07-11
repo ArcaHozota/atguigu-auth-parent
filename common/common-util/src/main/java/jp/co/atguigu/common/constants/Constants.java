@@ -7,10 +7,14 @@ package jp.co.atguigu.common.constants;
  */
 public final class Constants {
 
+	private Constants() {
+		throw new IllegalStateException("Utility class");
+	}
+
 	/**
 	 * 論理削除初期値
 	 */
-	public static final String LOGIC_DELETE_FLGINITIAL = "visible";
+	public static final String LOGIC_DELETE_INITIAL = "visible";
 
 	/**
 	 * 論理削除フラグ

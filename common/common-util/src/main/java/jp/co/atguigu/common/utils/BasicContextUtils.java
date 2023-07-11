@@ -9,7 +9,7 @@ import jp.co.atguigu.model.entity.BasicEntity;
  * 共通更新及び保存処理クラス
  *
  * @author Administrator
- * @date 2022-11-18
+ * @since 2022-11-18
  */
 public class BasicContextUtils {
 
@@ -17,6 +17,10 @@ public class BasicContextUtils {
 	 * 今の時間
 	 */
 	private static final Timestamp CURRENT_TIME = new Timestamp(System.currentTimeMillis());
+
+	private BasicContextUtils() {
+		throw new IllegalStateException("Utility class");
+	}
 
 	/**
 	 * 共通の保存処理ロジック
@@ -27,7 +31,7 @@ public class BasicContextUtils {
 		aEntity.setId(SnowflakeUtils.nextId());
 		aEntity.setCreationTime(CURRENT_TIME);
 		aEntity.setUpdatingTime(CURRENT_TIME);
-		aEntity.setLogicDeleteFlg(Constants.LOGIC_DELETE_FLGINITIAL);
+		aEntity.setLogicDeleteFlg(Constants.LOGIC_DELETE_INITIAL);
 	}
 
 	/**
