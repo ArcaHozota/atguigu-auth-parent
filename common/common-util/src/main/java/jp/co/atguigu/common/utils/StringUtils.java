@@ -1,6 +1,7 @@
 package jp.co.atguigu.common.utils;
 
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 import org.springframework.lang.Nullable;
 
@@ -8,19 +9,26 @@ import org.springframework.lang.Nullable;
  * 共通ストリング判断ツール
  *
  * @author Administrator
- *
+ * @since 2023-07-11
  */
 public final class StringUtils {
 
 	/**
 	 * UTF-8キャラセット
 	 */
-	public static final Charset CHARSET_UTF8 = Charset.forName("UTF-8");
+	public static final Charset CHARSET_UTF8 = StandardCharsets.UTF_8;
 
 	/**
 	 * 空のストリング
 	 */
 	public static final String EMPTY_STRING = "";
+
+	/**
+	 * コンストラクタ
+	 */
+	private StringUtils() {
+		throw new IllegalStateException("Utility class");
+	}
 
 	/**
 	 * 当ストリングは空かどうかを判断する

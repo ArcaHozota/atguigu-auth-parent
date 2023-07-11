@@ -82,7 +82,7 @@ public class SnowflakeIdGenerator {
 		long timestamp = System.currentTimeMillis();
 		// 今の時間は前のタイムスタンプより早くと、エラーになります
 		if (timestamp < this.lastTimestamp) {
-			throw new RuntimeException(
+			throw new Pagination.PaginationException(
 					String.format("Clock moved backwards. Refusing to generate id for %d milliseconds",
 							this.lastTimestamp - timestamp));
 		}
