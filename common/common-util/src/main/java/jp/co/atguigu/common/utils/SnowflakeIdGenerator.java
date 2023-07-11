@@ -19,25 +19,25 @@ public class SnowflakeIdGenerator {
 	private static final long DATACENTER_ID_BITS = 5L;
 
 	/** 最大のワークID */
-	private final long maxWorkerId = -1L ^ (-1L << WORKER_ID_BITS);
+	private static final long MAX_WORKER_ID = ~(-1L << WORKER_ID_BITS);
 
 	/** 最大のデータセンターID */
-	private final long maxDatacenterId = -1L ^ (-1L << DATACENTER_ID_BITS);
+	private static final long MAX_DATACENTER_ID = ~(-1L << DATACENTER_ID_BITS);
 
 	/** シークエンスの桁数 */
 	private static final long SEQUENCE_BITS = 12L;
 
 	/** ワークIDのシフト桁数 */
-	private final long workerIdShift = SEQUENCE_BITS;
+	private static final long WORKER_ID_SHIFT = SEQUENCE_BITS;
 
 	/** データセンターIDのシフト桁数 */
-	private final long datacenterIdShift = SEQUENCE_BITS + WORKER_ID_BITS;
+	private static final long DATACENTER_ID_SHIFT = SEQUENCE_BITS + WORKER_ID_BITS;
 
 	/** タイムスタンプのシフト桁数 */
-	private final long timestampLeftShift = SEQUENCE_BITS + WORKER_ID_BITS + DATACENTER_ID_BITS;
+	private static final long TIMESTAMP_LEFT_SHIFT = SEQUENCE_BITS + WORKER_ID_BITS + DATACENTER_ID_BITS;
 
 	/** シークエンスマスク */
-	private final long sequenceMask = -1L ^ (-1L << SEQUENCE_BITS);
+	private static final long SEQUENCE_MASK = ~(-1L << SEQUENCE_BITS);
 
 	/** ワークID */
 	private final long workerId;
@@ -59,13 +59,13 @@ public class SnowflakeIdGenerator {
 	 * @param datacenterId データセンターID(最大値は31)
 	 */
 	protected SnowflakeIdGenerator(final long workerId, final long datacenterId) {
-		if (workerId > this.maxWorkerId || workerId < 0) {
+		if (workerId > MAX_WORKER_ID || workerId < 0) {
 			throw new IllegalArgumentException(
-					String.format("worker Id can't be greater than %d or less than 0", this.maxWorkerId));
+					String.format("worker Id can't be greater than %d or less than 0", MAX_WORKER_ID));
 		}
-		if (datacenterId > this.maxDatacenterId || datacenterId < 0) {
+		if (datacenterId > MAX_DATACENTER_ID || datacenterId < 0) {
 			throw new IllegalArgumentException(
-					String.format("datacenter Id can't be greater than %d or less than 0", this.maxDatacenterId));
+					String.format("datacenter Id can't be greater than %d or less than 0", MAX_DATACENTER_ID));
 		}
 		this.workerId = workerId;
 		this.datacenterId = datacenterId;
@@ -88,7 +88,7 @@ public class SnowflakeIdGenerator {
 		}
 		// 同じ時間であれば、シークエンスを使う
 		if (this.lastTimestamp == timestamp) {
-			this.sequence = (this.sequence + 1) & this.sequenceMask;
+			this.sequence = (this.sequence + 1) & SEQUENCE_MASK;
 			if (this.sequence == 0) {
 				// 次のミリ秒までタイムスタンプえお取得する
 				timestamp = this.tillNextMillis(this.lastTimestamp);
@@ -100,8 +100,8 @@ public class SnowflakeIdGenerator {
 		// 前のタイムスタンプとして保存
 		this.lastTimestamp = timestamp;
 		// 新たな雪花アルゴリズムIDを生成
-		return ((timestamp - TIME_EPOCH) << this.timestampLeftShift) | (this.datacenterId << this.datacenterIdShift)
-				| (this.workerId << this.workerIdShift) | this.sequence;
+		return ((timestamp - TIME_EPOCH) << TIMESTAMP_LEFT_SHIFT) | (this.datacenterId << DATACENTER_ID_SHIFT)
+				| (this.workerId << WORKER_ID_SHIFT) | this.sequence;
 	}
 
 	/**
