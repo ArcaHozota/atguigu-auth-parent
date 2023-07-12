@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 
 import jp.co.atguigu.common.constants.Constants;
 import jp.co.atguigu.model.entity.BasicEntity;
+import org.springframework.lang.NonNull;
 
 /**
  * 共通更新及び保存処理クラス
@@ -27,7 +28,7 @@ public class BasicContextUtils {
 	 *
 	 * @param aEntity 共通エンティティ
 	 */
-	public static void fillWithInsert(final BasicEntity aEntity) {
+	public static void fillWithInsert(@NonNull final BasicEntity aEntity) {
 		aEntity.setId(SnowflakeUtils.nextId());
 		aEntity.setCreationTime(CURRENT_TIME);
 		aEntity.setUpdatingTime(CURRENT_TIME);
@@ -39,7 +40,7 @@ public class BasicContextUtils {
 	 *
 	 * @param aEntity 共通エンティティ
 	 */
-	public static void fillWithUpdate(final BasicEntity aEntity) {
+	public static void fillWithUpdate(@NonNull final BasicEntity aEntity) {
 		aEntity.setUpdatingTime(CURRENT_TIME);
 	}
 }
