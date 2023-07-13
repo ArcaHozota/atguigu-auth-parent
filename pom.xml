@@ -18,10 +18,10 @@
 	</parent>
 	<properties>
 		<java.version>11</java.version>
-		<mybatis.version>2.3.0</mybatis.version>
+		<mybatis.version>2.3.1</mybatis.version>
 		<oracle.version>18.15.0.0</oracle.version>
 		<knife4j.version>3.0.3</knife4j.version>
-		<jwt.version>0.7.0</jwt.version>
+		<jwt.version>0.11.2</jwt.version>
 		<fastjson.version>1.2.83</fastjson.version>
 	</properties>
 	<!-- バージョン管理dependencyManagement -->
