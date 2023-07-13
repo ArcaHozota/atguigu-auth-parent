@@ -24,7 +24,29 @@
                 #{updatingTime,jdbcType=DATE},
                 #{logicDeleteFlg,jdbcType=NVARCHAR})
     </insert>
-	<update id="removeById" parameterType="java.lang.Long">
+	<update id="updateById" parameterType="jp.co.atguigu.model.entity.Role">
+        UPDATE SSMG_ROLE SMR
+        <set>
+            <if test="roleName != null">
+                SMR.ROLE_NAME = #{roleName,jdbcType=NVARCHAR},
+            </if>
+            <if test="roleCd != null">
+                SMR.ROLE_CD = #{roleCd,jdbcType=NVARCHAR},
+            </if>
+            <if test="description != null">
+                SMR.DESCRIPTION = #{description,jdbcType=NVARCHAR},
+            </if>
+            <if test="createdTime != null">
+                SMR.CREATED_TIME = #{createdTime,jdbcType=DATE},
+            </if>
+            <if test="updatedTime != null">
+                SMR.UPDATED_TIME = #{updatedTime,jdbcType=DATE},
+            </if>
+        </set>
+        WHERE SMR.LOGIC_DELETE_FLG = 'visible'
+        AND SMR.ID = #{id,jdbcType=NUMERIC}
+    </update>
+    <update id="removeById" parameterType="java.lang.Long">
         UPDATE SSMG_ROLE
         SET LOGIC_DELETE_FLG = 'removed'
         WHERE ID = #{id,jdbcType=NUMERIC}

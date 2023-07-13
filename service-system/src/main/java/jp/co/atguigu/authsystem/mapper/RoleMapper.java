@@ -39,7 +39,16 @@ public interface RoleMapper {
 	 * @param id ロールID
 	 */
 	@Transactional(rollbackFor = OracleSQLException.class)
-	Integer removeById(Long id);
+	Integer removeById(@Param("id") Long id);
+
+	/**
+	 * データを更新する
+	 *
+	 * @param role ロールエンティティ
+	 * @return Integer
+	 */
+	@Transactional(rollbackFor = OracleSQLException.class)
+	Integer updateById(Role role);
 
 	/**
 	 * すべてコード数の検索
