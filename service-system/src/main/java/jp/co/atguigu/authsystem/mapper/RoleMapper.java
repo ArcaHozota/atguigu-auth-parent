@@ -31,7 +31,7 @@ public interface RoleMapper {
 	 * @param role ロールエンティティ
 	 */
 	@Transactional(rollbackFor = OracleSQLException.class)
-	void saveById(Role role);
+	Long saveById(Role role);
 
 	/**
 	 * データを削除する(論理削除)

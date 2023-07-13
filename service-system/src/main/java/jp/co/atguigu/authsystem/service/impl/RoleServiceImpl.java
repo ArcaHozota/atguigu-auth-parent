@@ -40,8 +40,8 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 	@Override
-	public void save(final Role role) {
-		this.roleMapper.saveById(role);
+	public boolean save(final Role role) {
+		return this.roleMapper.saveById(role) > 0;
 	}
 
 	@Override

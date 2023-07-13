@@ -80,8 +80,11 @@ public class RoleController {
 	 */
 	@ApiOperation("ページング")
 	@PostMapping("/save")
-	public Result<Pagination<Role>> getRolePages(@RequestBody final Role role) {
-		this.roleService.save(role);
-		return Result.ok();
+	public Result<?> getRolePages(@RequestBody final Role role) {
+		final boolean successOrNot = this.roleService.save(role);
+		if (successOrNot) {
+			return Result.ok();
+		}
+		return Result.fail();
 	}
 }

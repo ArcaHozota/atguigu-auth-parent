@@ -24,9 +24,9 @@ public interface RoleService {
 	 * ロール情報を保存する
 	 *
 	 * @param role エンティティ
-	 * @return true:成功, false:削除失敗
+	 * @return true:成功, false:保存失敗
 	 */
-	void save(Role role);
+	boolean save(Role role);
 
 	/**
 	 * ロール情報を削除する
