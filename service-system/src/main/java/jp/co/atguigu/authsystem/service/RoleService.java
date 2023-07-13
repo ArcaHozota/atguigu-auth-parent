@@ -29,6 +29,14 @@ public interface RoleService {
 	boolean save(Role role);
 
 	/**
+	 * ロール情報を更新する
+	 *
+	 * @param role エンティティ
+	 * @return true:成功, false:更新失敗
+	 */
+	boolean update(Role role);
+
+	/**
 	 * ロール情報を削除する
 	 *
 	 * @param id ロールID

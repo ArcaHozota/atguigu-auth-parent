@@ -43,6 +43,22 @@ public class RoleController {
 	}
 
 	/**
+	 * ページング検索
+	 *
+	 * @param page  ページナンバー
+	 * @param limit ページサイズ
+	 */
+	@ApiOperation("ページング検索")
+	@GetMapping("/{page}/{limit}")
+	public Result<Pagination<Role>> getRolePages(@PathVariable final Integer page, @PathVariable final Integer limit,
+			final RoleQueryVo roleQueryVo) {
+		// ページングオブジェクト
+		final Pagination<Role> pages = this.roleService.pagination(page, limit, roleQueryVo);
+		// ページングオブジェクトを返却する
+		return Result.ok(pages);
+	}
+
+	/**
 	 * ロール情報を削除する
 	 *
 	 * @param id ロールID
@@ -58,30 +74,29 @@ public class RoleController {
 	}
 
 	/**
-	 * ページング検索
-	 *
-	 * @param page  ページナンバー
-	 * @param limit ページサイズ
-	 */
-	@ApiOperation("ページング")
-	@GetMapping("/{page}/{limit}")
-	public Result<Pagination<Role>> getRolePages(@PathVariable final Integer page, @PathVariable final Integer limit,
-			final RoleQueryVo roleQueryVo) {
-		// ページングオブジェクト
-		final Pagination<Role> pages = this.roleService.pagination(page, limit, roleQueryVo);
-		// ページングオブジェクトを返却する
-		return Result.ok(pages);
-	}
-
-	/**
 	 * ロール情報を保存する
 	 *
 	 * @param role エンティティ
 	 */
 	@ApiOperation("保存")
 	@PostMapping("/save")
-	public Result<?> getRolePages(@RequestBody final Role role) {
+	public Result<?> save(@RequestBody final Role role) {
 		final boolean successOrNot = this.roleService.save(role);
+		if (successOrNot) {
+			return Result.ok();
+		}
+		return Result.fail();
+	}
+
+	/**
+	 * ロール情報を更新する
+	 *
+	 * @param role エンティティ
+	 */
+	@ApiOperation("更新")
+	@PostMapping("/update")
+	public Result<?> update(@RequestBody final Role role) {
+		final boolean successOrNot = this.roleService.update(role);
 		if (successOrNot) {
 			return Result.ok();
 		}

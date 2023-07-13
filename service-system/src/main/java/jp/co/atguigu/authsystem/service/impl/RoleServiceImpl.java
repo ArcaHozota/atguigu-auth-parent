@@ -40,6 +40,11 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 	@Override
+	public boolean update(final Role role) {
+		return this.roleMapper.updateById(role) > 0;
+	}
+
+	@Override
 	public boolean remove(final Long id) {
 		return this.roleMapper.removeById(id) > 0;
 	}
