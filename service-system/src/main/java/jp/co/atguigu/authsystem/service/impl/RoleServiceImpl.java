@@ -46,15 +46,15 @@ public class RoleServiceImpl implements RoleService {
 
 	@Override
 	public boolean remove(final Long id) {
-		final Long removeById = this.roleMapper.removeById(id);
+		final Integer removeById = this.roleMapper.removeById(id);
 		return removeById > 0;
 	}
 
 	@Override
 	public Pagination<Role> pagination(final Long pageNum, final Long pageSize, final RoleQueryVo queryVo) {
 		final Long offset = (pageNum - 1) * pageSize;
-		final Long pagesCnt = this.roleMapper.findRolePagesCnt(queryVo);
+		final Integer pagesCnt = this.roleMapper.findRolePagesCnt(queryVo);
 		final List<Role> rolePages = this.roleMapper.findRolePages(offset, pageSize, queryVo);
-		return Pagination.of(rolePages, Math.toIntExact(pagesCnt), Math.toIntExact(pageNum), Math.toIntExact(pageSize));
+		return Pagination.of(rolePages, pagesCnt, Math.toIntExact(pageNum), Math.toIntExact(pageSize));
 	}
 }

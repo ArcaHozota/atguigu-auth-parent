@@ -39,7 +39,7 @@
         FROM SSMG_ROLE SMR
         WHERE SMR.LOGIC_DELETE_FLG = 'visible'
     </select>
-	<select id="findRolePagesCnt" resultMap="java.lang.Long">
+	<select id="findRolePagesCnt" resultType="java.lang.Integer">
         SELECT COUNT(1) AS RECORD
         FROM SSMG_ROLE SMR
         WHERE SMR.LOGIC_DELETE_FLG = 'visible'

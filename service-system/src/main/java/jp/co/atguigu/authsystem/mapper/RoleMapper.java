@@ -31,7 +31,7 @@ public interface RoleMapper {
 	 * @param role ロールエンティティ
 	 */
 	@Transactional(rollbackFor = OracleSQLException.class)
-	Long saveById(Role role);
+	Integer saveById(Role role);
 
 	/**
 	 * データを削除する(論理削除)
@@ -39,7 +39,7 @@ public interface RoleMapper {
 	 * @param id ロールID
 	 */
 	@Transactional(rollbackFor = OracleSQLException.class)
-	Long removeById(Long id);
+	Integer removeById(Long id);
 
 	/**
 	 * すべてコード数の検索
@@ -47,7 +47,7 @@ public interface RoleMapper {
 	 * @param queryVo クエリVO
 	 * @return Integer
 	 */
-	Long findRolePagesCnt(@Param("vo") RoleQueryVo queryVo);
+	Integer findRolePagesCnt(@Param("vo") RoleQueryVo queryVo);
 
 	/**
 	 * ページング検索
