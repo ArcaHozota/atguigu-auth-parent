@@ -24,22 +24,22 @@
                 #{updatingTime,jdbcType=DATE},
                 #{logicDeleteFlg,jdbcType=NVARCHAR})
     </insert>
-	<update id="removeById" parameterType="java.lang.Integer">
+	<update id="removeById" parameterType="java.lang.Long">
 		UPDATE SSMG_ROLE
 		SET LOGIC_DELETE_FLG = 'removed'
 		WHERE ID = #{id,jdbcType=NUMERIC}
 	</update>
 	<select id="findAll" resultMap="BasicResultMap">
-		SELECT SMR.ID,
-			   SMR.ROLE_NAME,
-			   SMR.ROLE_CD,
-			   SMR.DESCRIPTION,
-			   SMR.CREATED_TIME,
-			   SMR.UPDATED_TIME
-		FROM SSMG_ROLE SMR
-		WHERE SMR.LOGIC_DELETE_FLG = 'visible'
-	</select>
-	<select id="findRolePagesCnt" resultMap="java.lang.Integer">
+        SELECT SMR.ID,
+               SMR.ROLE_NAME,
+               SMR.ROLE_CD,
+               SMR.DESCRIPTION,
+               SMR.CREATED_TIME,
+               SMR.UPDATED_TIME
+        FROM SSMG_ROLE SMR
+        WHERE SMR.LOGIC_DELETE_FLG = 'visible'
+    </select>
+	<select id="findRolePagesCnt" resultMap="java.lang.Long">
         SELECT COUNT(1) AS RECORD
         FROM SSMG_ROLE SMR
         WHERE SMR.LOGIC_DELETE_FLG = 'visible'

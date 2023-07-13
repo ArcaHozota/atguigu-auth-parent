@@ -26,13 +26,13 @@ public class BasicEntity implements Serializable {
 	 * 作成時間
 	 */
 	@ApiModelProperty(value = "創建時間")
-	private Timestamp creationTime;
+	private Timestamp createdTime;
 
 	/**
 	 * 更新時間
 	 */
 	@ApiModelProperty(value = "更新時間")
-	private Timestamp updatingTime;
+	private Timestamp updatedTime;
 
 	/**
 	 * 論理削除フラグ

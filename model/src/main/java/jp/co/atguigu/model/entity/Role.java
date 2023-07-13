@@ -21,7 +21,7 @@ public class Role extends BasicEntity {
 	private String roleName;
 
 	@ApiModelProperty(value = "角色編碼")
-	private String roleCode;
+	private String roleCd;
 
 	@ApiModelProperty(value = "描述")
 	private String description;
