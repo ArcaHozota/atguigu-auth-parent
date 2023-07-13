@@ -21,6 +21,14 @@ public interface RoleService {
 	List<Role> getAll();
 
 	/**
+	 * ロール情報を保存する
+	 *
+	 * @param role エンティティ
+	 * @return true:成功, false:削除失敗
+	 */
+	void save(Role role);
+
+	/**
 	 * ロール情報を削除する
 	 *
 	 * @param id ロールID

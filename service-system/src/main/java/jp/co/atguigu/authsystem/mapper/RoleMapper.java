@@ -2,11 +2,13 @@ package jp.co.atguigu.authsystem.mapper;
 
 import java.util.List;
 
+import oracle.jdbc.driver.OracleSQLException;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import jp.co.atguigu.model.entity.Role;
 import jp.co.atguigu.model.vo.RoleQueryVo;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * ロール授権のマッパーインターフェス
@@ -28,6 +30,7 @@ public interface RoleMapper {
 	 *
 	 * @param role ロールエンティティ
 	 */
+	@Transactional(rollbackFor = OracleSQLException.class)
 	void saveById(Role role);
 
 	/**
@@ -35,6 +38,7 @@ public interface RoleMapper {
 	 *
 	 * @param id ロールID
 	 */
+	@Transactional(rollbackFor = OracleSQLException.class)
 	Long removeById(Long id);
 
 	/**

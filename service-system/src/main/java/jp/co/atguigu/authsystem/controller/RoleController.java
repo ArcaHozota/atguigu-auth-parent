@@ -4,11 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -64,16 +60,28 @@ public class RoleController {
 	/**
 	 * ページング検索
 	 *
-	 * @param page ページナンバー
+	 * @param page  ページナンバー
 	 * @param limit ページサイズ
 	 */
 	@ApiOperation("ページング")
-	@DeleteMapping("/{page}/{limit}")
+	@GetMapping("/{page}/{limit}")
 	public Result<Pagination<Role>> getRolePages(@PathVariable final Long page, @PathVariable final Long limit,
 			final RoleQueryVo roleQueryVo) {
 		// ページングオブジェクト
 		final Pagination<Role> pages = this.roleService.pagination(page, limit, roleQueryVo);
 		// ページングオブジェクトを返却する
 		return Result.ok(pages);
+	}
+
+	/**
+	 * ロール保存
+	 *
+	 * @param role エンティティ
+	 */
+	@ApiOperation("ページング")
+	@PostMapping("/save")
+	public Result<Pagination<Role>> getRolePages(@RequestBody final Role role) {
+		this.roleService.save(role);
+		return Result.ok();
 	}
 }
