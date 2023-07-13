@@ -74,11 +74,11 @@ public class RoleController {
 	}
 
 	/**
-	 * ロール保存
+	 * ロール情報を保存する
 	 *
 	 * @param role エンティティ
 	 */
-	@ApiOperation("ページング")
+	@ApiOperation("保存")
 	@PostMapping("/save")
 	public Result<?> getRolePages(@RequestBody final Role role) {
 		final boolean successOrNot = this.roleService.save(role);
