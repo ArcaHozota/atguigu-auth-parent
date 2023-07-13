@@ -3,72 +3,65 @@
 <!-- ロール授権のマッピング実装ファイル -->
 <mapper namespace="jp.co.atguigu.authsystem.mapper.RoleMapper">
 	<resultMap id="BasicResultMap"
-		type="jp.co.atguigu.model.entity.Role">
-		<id column="ID" jdbcType="NUMERIC" property="id" />
-		<result column="ROLE_NAME" jdbcType="NVARCHAR"
-			property="roleName" />
-		<result column="ROLE_CODE" jdbcType="NVARCHAR"
-			property="roleCode" />
-		<result column="DESCRIPTION" jdbcType="NVARCHAR"
-			property="description" />
-		<result column="CREATION_TIME" jdbcType="DATE"
-			property="creationTime" />
-		<result column="UPDATING_TIME" jdbcType="DATE"
-			property="updatingTime" />
-		<result column="LOGIC_DELETE_FLG" jdbcType="NVARCHAR"
-			property="logicDeleteFlg" />
+		type="jp.co.atguigu.model.entity.Role" autoMapping="true">
+		<id column="ID" jdbcType="NUMERIC" property="id"/>
 	</resultMap>
-	<insert id="saveById" 
+	<insert id="saveById"
 		parameterType="jp.co.atguigu.model.entity.Role">
-		INSERT 
-		INTO SSMG_ROLE( 
-		    ID, 
-		    ROLE_NAME, 
-		    ROLE_CODE, 
-		    DESCRIPTION, 
-		    CREATION_TIME, 
-		    UPDATING_TIME, 
-		    LOGIC_DELETE_FLG
-		) 
-		VALUES ( 
-		    #{id,jdbcType=NUMERIC}, 
-		    #{roleName,jdbcType=NVARCHAR},
-		    #{roleCode,jdbcType=NVARCHAR},
-		    #{description,jdbcType=NVARCHAR},
-		    #{creationTime,jdbcType=DATE},
-		    #{updatingTime,jdbcType=DATE},
-		    #{logicDeleteFlg,jdbcType=NVARCHAR}
-		)
-	</insert>
-	<update id="removeById" parameterType="java.lang.Long">
-		UPDATE SSMG_ROLE 
-		SET
-		    LOGIC_DELETE_FLG = 'removed' 
-		WHERE
-		    ID = #{id,jdbcType=NUMERIC}
+        INSERT
+        INTO SSMG_ROLE(ID,
+                       ROLE_NAME,
+                       ROLE_CD,
+                       DESCRIPTION,
+                       CREATED_TIME,
+                       UPDATED_TIME,
+                       LOGIC_DELETE_FLG)
+        VALUES (#{id,jdbcType=NUMERIC},
+                #{roleName,jdbcType=NVARCHAR},
+                #{roleCode,jdbcType=NVARCHAR},
+                #{description,jdbcType=NVARCHAR},
+                #{creationTime,jdbcType=DATE},
+                #{updatingTime,jdbcType=DATE},
+                #{logicDeleteFlg,jdbcType=NVARCHAR})
+    </insert>
+	<update id="removeById" parameterType="java.lang.Integer">
+		UPDATE SSMG_ROLE
+		SET LOGIC_DELETE_FLG = 'removed'
+		WHERE ID = #{id,jdbcType=NUMERIC}
 	</update>
 	<select id="findAll" resultMap="BasicResultMap">
-		SELECT
-		    SMR.ID, 
-		    SMR.ROLE_NAME, 
-		    SMR.ROLE_CODE, 
-		    SMR.DESCRIPTION, 
-		    SMR.CREATION_TIME, 
-		    SMR.UPDATING_TIME 
-		FROM
-		    SSMG_ROLE SMR 
-		WHERE
-		    SMR.LOGIC_DELETE_FLG = 'visible'
+		SELECT SMR.ID,
+			   SMR.ROLE_NAME,
+			   SMR.ROLE_CD,
+			   SMR.DESCRIPTION,
+			   SMR.CREATED_TIME,
+			   SMR.UPDATED_TIME
+		FROM SSMG_ROLE SMR
+		WHERE SMR.LOGIC_DELETE_FLG = 'visible'
 	</select>
-	<select id="findRolePagesCnt" resultMap="BasicResultMap">
-		SELECT
-		    COUNT(1) AS RECORD
-		FROM
-		    SSMG_ROLE SMR 
-		WHERE
-		    SMR.LOGIC_DELETE_FLG = 'visible'
-		<if test="vo.roleName != null &amp; vo.roleName != ''">
-			AND SMR.ROLE_NAME LIKE CONCAT('%', CONCAT(#{vo.roleName}, '%'))
-		</if>
-	</select>
+	<select id="findRolePagesCnt" resultMap="java.lang.Integer">
+        SELECT COUNT(1) AS RECORD
+        FROM SSMG_ROLE SMR
+        WHERE SMR.LOGIC_DELETE_FLG = 'visible'
+        <if test="vo.roleName != null &amp; vo.roleName != ''">
+            AND SMR.ROLE_NAME LIKE CONCAT('%', CONCAT(#{vo.roleName}, '%'))
+        </if>
+    </select>
+	<select id="findRolePages" resultMap="BasicResultMap">
+        SELECT
+        SMR.ID,
+        SMR.ROLE_NAME,
+        SMR.ROLE_CD,
+        SMR.DESCRIPTION,
+        SMR.CREATED_TIME,
+        SMR.UPDATED_TIME
+        FROM
+        SSMG_ROLE SMR
+        WHERE
+        SMR.LOGIC_DELETE_FLG = 'visible'
+        <if test="vo.roleName != null &amp; vo.roleName != ''">
+            AND SMR.ROLE_NAME LIKE CONCAT('%', CONCAT(#{vo.roleName}, '%'))
+        </if>
+        OFFSET #{offset,jdbcType=BIGINT} FETCH NEXT #{pageSize,jdbcType=BIGINT} ROWS ONLY
+    </select>
 </mapper>

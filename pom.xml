@@ -22,7 +22,7 @@
 		<oracle.version>18.15.0.0</oracle.version>
 		<knife4j.version>3.0.3</knife4j.version>
 		<jwt.version>0.7.0</jwt.version>
-		<fastjson.version>1.2.29</fastjson.version>
+		<fastjson.version>1.2.83</fastjson.version>
 	</properties>
 	<!-- バージョン管理dependencyManagement -->
 	<dependencyManagement>
