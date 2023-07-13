@@ -66,4 +66,12 @@ public interface RoleMapper {
 	 */
 	List<Role> findRolePages(@Param("offset") Integer offset, @Param("pageSize") Integer pageSize,
 			@Param("vo") RoleQueryVo queryVo);
+
+	/**
+	 * 条件検索
+	 * 
+	 * @param id ロールID
+	 * @return Role
+	 */
+	Role getById(@Param("id") Long id);
 }

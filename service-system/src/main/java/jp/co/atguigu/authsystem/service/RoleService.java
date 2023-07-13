@@ -53,4 +53,12 @@ public interface RoleService {
 	 * @return Pagination<Role>
 	 */
 	Pagination<Role> pagination(Integer pageNum, Integer pageSize, RoleQueryVo queryVo);
+
+	/**
+	 * IDによってロール情報を検索する
+	 *
+	 * @param id ロールID
+	 * @return Role
+	 */
+    Role getById(Long id);
 }

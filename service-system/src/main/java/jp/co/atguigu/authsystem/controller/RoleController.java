@@ -102,4 +102,16 @@ public class RoleController {
 		}
 		return Result.fail();
 	}
+
+	/**
+	 * IDによってロール情報を検索する
+	 *
+	 * @param id ロールID
+	 */
+	@ApiOperation("条件検索")
+	@GetMapping("/findRoleById/{id}")
+	public Result<Role> getRoleById(@PathVariable final Long id) {
+		final Role role = this.roleService.getById(id);
+		return Result.ok(role);
+	}
 }

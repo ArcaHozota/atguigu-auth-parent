@@ -56,4 +56,9 @@ public class RoleServiceImpl implements RoleService {
 		final List<Role> rolePages = this.roleMapper.findRolePages(offset, pageSize, queryVo);
 		return Pagination.of(rolePages, pagesCnt, pageNum, pageSize);
 	}
+
+	@Override
+	public Role getById(final Long id) {
+		return this.roleMapper.getById(id);
+	}
 }

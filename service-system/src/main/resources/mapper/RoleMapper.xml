@@ -87,4 +87,15 @@
         OFFSET #{offset,jdbcType=BIGINT} ROWS
         FETCH NEXT #{pageSize,jdbcType=BIGINT} ROWS ONLY
     </select>
+    <select id="getById" resultMap="BasicResultMap">
+        SELECT SMR.ID,
+               SMR.ROLE_NAME,
+               SMR.ROLE_CD,
+               SMR.DESCRIPTION,
+               SMR.CREATED_TIME,
+               SMR.UPDATED_TIME
+        FROM SSMG_ROLE SMR
+        WHERE SMR.LOGIC_DELETE_FLG = 'visible'
+          AND SMR.ID = #{id,jdbcType=BIGINT}
+    </select>
 </mapper>
