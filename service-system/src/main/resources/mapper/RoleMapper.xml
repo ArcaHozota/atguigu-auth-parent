@@ -62,6 +62,7 @@
         <if test="vo.roleName != null &amp; vo.roleName != ''">
             AND SMR.ROLE_NAME LIKE CONCAT('%', CONCAT(#{vo.roleName}, '%'))
         </if>
-        OFFSET #{offset,jdbcType=BIGINT} FETCH NEXT #{pageSize,jdbcType=BIGINT} ROWS ONLY
+        OFFSET #{offset,jdbcType=BIGINT} ROWS
+        FETCH NEXT #{pageSize,jdbcType=BIGINT} ROWS ONLY
     </select>
 </mapper>

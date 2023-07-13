@@ -47,18 +47,14 @@ public class RoleServiceImpl implements RoleService {
 	 */
 	@Override
 	public boolean remove(final Long id) {
-		final Integer removeById = this.roleMapper.removeById(id);
-		if (removeById > 0) {
-			return true;
-		}
-		return false;
+		final Long removeById = this.roleMapper.removeById(id);
+		return removeById > 0;
 	}
 
 	@Override
 	public Pagination<Role> pagination(final Long pageNum, final Long pageSize, final RoleQueryVo queryVo) {
-		final long pageMin = (pageNum - 1) * pageSize;
-		final long pageMax = pageNum * pageSize;
-		final Integer pagesCnt = this.roleMapper.findRolePagesCnt(queryVo);
+		final long offset = (pageNum - 1) * pageSize;
+		final Long pagesCnt = this.roleMapper.findRolePagesCnt(queryVo);
 		return null;
 	}
 }

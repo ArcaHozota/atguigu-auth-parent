@@ -35,7 +35,7 @@ public interface RoleMapper {
 	 *
 	 * @param id ロールID
 	 */
-	Integer removeById(Long id);
+	Long removeById(Long id);
 
 	/**
 	 * すべてコード数の検索
@@ -43,5 +43,5 @@ public interface RoleMapper {
 	 * @param queryVo クエリVO
 	 * @return Integer
 	 */
-	Integer findRolePagesCnt(@Param("vo") RoleQueryVo queryVo);
+	Long findRolePagesCnt(@Param("vo") RoleQueryVo queryVo);
 }
