@@ -64,7 +64,8 @@ public class RoleController {
 	/**
 	 * ページング検索
 	 *
-	 * @param id ロールID
+	 * @param page ページナンバー
+	 * @param limit ページサイズ
 	 */
 	@ApiOperation("ページング")
 	@DeleteMapping("/{page}/{limit}")

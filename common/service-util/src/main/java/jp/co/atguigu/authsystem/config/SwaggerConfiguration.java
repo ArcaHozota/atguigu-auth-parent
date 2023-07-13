@@ -33,6 +33,6 @@ public class SwaggerConfiguration {
 	@Bean
 	protected ApiInfo apiInfo() {
 		return new ApiInfoBuilder().title("バックエンド管理システム").description("バックエンド管理システムの定義ファイル")
-				.contact(new Contact("atguigu", "http://atguigu.co.jp", "toshiba@guigu.com")).version("1.0").build();
+				.contact(new Contact("atguigu", "https://atguigu.co.jp", "toshiba@guigu.com")).version("1.0").build();
 	}
 }
