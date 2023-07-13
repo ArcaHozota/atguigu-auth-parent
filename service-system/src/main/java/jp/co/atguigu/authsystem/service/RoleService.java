@@ -44,5 +44,5 @@ public interface RoleService {
 	 * @param queryVo  クエリVO
 	 * @return Pagination<Role>
 	 */
-	Pagination<Role> pagination(Long pageNum, Long pageSize, RoleQueryVo queryVo);
+	Pagination<Role> pagination(Integer pageNum, Integer pageSize, RoleQueryVo queryVo);
 }

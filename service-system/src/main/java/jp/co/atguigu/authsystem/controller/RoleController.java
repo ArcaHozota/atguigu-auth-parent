@@ -65,7 +65,7 @@ public class RoleController {
 	 */
 	@ApiOperation("ページング")
 	@GetMapping("/{page}/{limit}")
-	public Result<Pagination<Role>> getRolePages(@PathVariable final Long page, @PathVariable final Long limit,
+	public Result<Pagination<Role>> getRolePages(@PathVariable final Integer page, @PathVariable final Integer limit,
 			final RoleQueryVo roleQueryVo) {
 		// ページングオブジェクト
 		final Pagination<Role> pages = this.roleService.pagination(page, limit, roleQueryVo);
