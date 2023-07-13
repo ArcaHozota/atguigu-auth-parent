@@ -29,11 +29,6 @@ public class RoleServiceImpl implements RoleService {
 	@Resource
 	private RoleMapper roleMapper;
 
-	/**
-	 * すべてのロール情報を抽出する
-	 *
-	 * @return List<Role>
-	 */
 	@Override
 	public List<Role> getAll() {
 		return this.roleMapper.findAll();
@@ -46,8 +41,7 @@ public class RoleServiceImpl implements RoleService {
 
 	@Override
 	public boolean remove(final Long id) {
-		final Integer removeById = this.roleMapper.removeById(id);
-		return removeById > 0;
+		return this.roleMapper.removeById(id) > 0;
 	}
 
 	@Override
