@@ -53,8 +53,9 @@ public class RoleServiceImpl implements RoleService {
 
 	@Override
 	public Pagination<Role> pagination(final Long pageNum, final Long pageSize, final RoleQueryVo queryVo) {
-		final long offset = (pageNum - 1) * pageSize;
+		final Long offset = (pageNum - 1) * pageSize;
 		final Long pagesCnt = this.roleMapper.findRolePagesCnt(queryVo);
-		return null;
+		final List<Role> rolePages = this.roleMapper.findRolePages(offset, pageSize, queryVo);
+		return Pagination.of(rolePages, Math.toIntExact(pagesCnt), Math.toIntExact(pageNum), Math.toIntExact(pageSize));
 	}
 }
